@@ -99,7 +99,6 @@ namespace Testing__PixelEngine_
             int dir = 1; // direction for first check with diagonals
             bool notDone = false;
             List<Point> newPoints = new List<Point>();
-            //pointList.Reverse(); //maybe?
             foreach (Point pt in pointList)
             {
                 int value = AllowedToMove(pt);
