@@ -59,9 +59,9 @@ namespace Testing__PixelEngine_
                         Points.Add(new Point(mouseX + i, mouseY + v));
                     }
                 }
-                Point dummy = GetLowest(new Point(mouseX - 20, mouseY - 20));
-                Console.WriteLine(dummy);
-                screen.SetPixel(dummy.X, dummy.Y, Color.Purple);
+                //Point dummy = GetLowest(new Point(mouseX - 20, mouseY - 20));
+                //Console.WriteLine(dummy);
+                //screen.SetPixel(dummy.X, dummy.Y, Color.Red);
             }
             Refresh(); // invalidate() & update()
         }
@@ -86,12 +86,11 @@ namespace Testing__PixelEngine_
         }
         private Point GetLowest(Point p)
         {
-            Point Original = p;
             Point New = p;
-            if (screen.GetPixel(p.X, p.Y + 1).ToArgb() == 0)
+            if (screen.GetPixel(p.X, p.Y + 1).ToArgb() != 0) // if pixel is not empty
             {
                New = new Point(New.X, New.Y +1);
-                GetLowest(New);
+               New = GetLowest(New);
             }
             return New;
         }
@@ -100,6 +99,7 @@ namespace Testing__PixelEngine_
             int dir = 1; // direction for first check with diagonals
             bool notDone = false;
             List<Point> newPoints = new List<Point>();
+            //pointList.Reverse(); //maybe?
             foreach (Point pt in pointList)
             {
                 int value = AllowedToMove(pt);
