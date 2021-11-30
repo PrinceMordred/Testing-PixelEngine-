@@ -19,8 +19,17 @@ namespace Testing__PixelEngine_
             InitializeComponent();
             this.DoubleBuffered = true;
             floor = Height -90;
+            Start();
             MouseDown += PhysicsWIn_MouseDown;
             Paint += PhysicsWIn_Paint;
+        }
+        void Start() // set initial values
+        {
+            for (int x = 0; x < 100; x++) // make a diagonal platform
+            {
+                screen.SetPixel(200 + x, 200 + x, Color.Gray);
+                screen.SetPixel(200 + x, 199 + x, Color.Gray);
+            }
         }
         private void PhysicsWIn_Paint(object sender, PaintEventArgs pea)
         {
@@ -99,7 +108,7 @@ namespace Testing__PixelEngine_
                     if (screen.GetPixel(pt.X - dir, pt.Y + 1).ToArgb() == 0)
                     {
                         newPoints.Add(new Point(pt.X - dir, pt.Y + 1));
-                        screen.SetPixel(pt.X - dir, pt.Y + 1, Color.Red);
+                        screen.SetPixel(pt.X - dir, pt.Y + 1, Color.Black);
                         screen.SetPixel(pt.X , pt.Y, Color.Empty);
                         dir = -1; // switch first direction checked
                     }
