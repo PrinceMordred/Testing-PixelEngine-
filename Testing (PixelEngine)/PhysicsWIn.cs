@@ -29,6 +29,9 @@ namespace Testing__PixelEngine_
             {
                 screen.SetPixel(200 + x, 200 + x, Color.Gray);
                 screen.SetPixel(200 + x, 199 + x, Color.Gray);
+
+                screen.SetPixel(300 - x, 200 + x, Color.Gray);
+                screen.SetPixel(300 - x, 199 + x, Color.Gray);
             }
         }
         private void PhysicsWIn_Paint(object sender, PaintEventArgs pea)
