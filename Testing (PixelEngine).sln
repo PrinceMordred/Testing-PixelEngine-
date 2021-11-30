@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31624.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testing (PixelEngine)", "Testing (PixelEngine)\Testing (PixelEngine).csproj", "{DF796FEF-692E-461B-B5C9-4454A86DD966}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DF796FEF-692E-461B-B5C9-4454A86DD966}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF796FEF-692E-461B-B5C9-4454A86DD966}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF796FEF-692E-461B-B5C9-4454A86DD966}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF796FEF-692E-461B-B5C9-4454A86DD966}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1C741811-EA4A-429B-90C2-DDE035CD4627}
+	EndGlobalSection
+EndGlobal
