@@ -137,7 +137,7 @@ namespace Testing__PixelEngine_
             }
             newPoints.Clear();
             Refresh();
-            Thread.Sleep(5); // 1000/9.81 (gravity) -- need to add speedup 9.82m/s^2
+            Thread.Sleep(1); // 1000/9.81 (gravity) -- need to add speedup 9.82m/s^2
             if (notDone)
             {
                 Gravity(pointList);
