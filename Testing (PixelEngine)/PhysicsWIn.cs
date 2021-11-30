@@ -59,6 +59,9 @@ namespace Testing__PixelEngine_
                         Points.Add(new Point(mouseX + i, mouseY + v));
                     }
                 }
+                Point dummy = GetLowest(new Point(mouseX - 20, mouseY - 20));
+                Console.WriteLine(dummy);
+                screen.SetPixel(dummy.X, dummy.Y, Color.Purple);
             }
             Refresh(); // invalidate() & update()
         }
@@ -81,7 +84,17 @@ namespace Testing__PixelEngine_
                 return 3;
             }
         }
-        
+        private Point GetLowest(Point p)
+        {
+            Point Original = p;
+            Point New = p;
+            if (screen.GetPixel(p.X, p.Y + 1).ToArgb() == 0)
+            {
+               New = new Point(New.X, New.Y +1);
+                GetLowest(New);
+            }
+            return New;
+        }
         private void Gravity(List<Point> pointList)
         {
             int dir = 1; // direction for first check with diagonals
@@ -90,10 +103,11 @@ namespace Testing__PixelEngine_
             foreach (Point pt in pointList)
             {
                 int value = AllowedToMove(pt);
-                if (value == 1 )
+                if (value == 1)
                 {
                     notDone = true;
                 }
+                
 
                 if (pt.Y == floor-1) // if pixel hits bottom
                 {
@@ -137,7 +151,7 @@ namespace Testing__PixelEngine_
             }
             newPoints.Clear();
             Refresh();
-            Thread.Sleep(1); // 1000/9.81 (gravity) -- need to add speedup 9.82m/s^2
+            //Thread.Sleep(0); // 1000/9.81 (gravity) -- need to add speedup 9.82m/s^2
             if (notDone)
             {
                 Gravity(pointList);
