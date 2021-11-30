@@ -8,6 +8,7 @@ namespace Testing__PixelEngine_
 {
     public partial class PhysicsWIn : Form
     {
+        public Element[,] ScreenArray;
         public Bitmap screen = new Bitmap(5000, 5000);
         public List<Point> Points = new List<Point>();
         public int mouseX;
@@ -17,6 +18,7 @@ namespace Testing__PixelEngine_
         public PhysicsWIn()
         {
             InitializeComponent();
+            ScreenArray = new Element[ClientSize.Width, ClientSize.Height];
             this.DoubleBuffered = true;
             floor = Height -90;
             Start();
@@ -25,18 +27,10 @@ namespace Testing__PixelEngine_
         }
         void Start() // set initial values
         {
-            for (int x = 0; x < 100; x++) // make a diagonal platform
-            {
-                screen.SetPixel(200 + x, 200 + x, Color.Gray);
-                screen.SetPixel(200 + x, 199 + x, Color.Gray);
 
-                screen.SetPixel(300 - x, 200 + x, Color.Gray);
-                screen.SetPixel(300 - x, 199 + x, Color.Gray);
-            }
         }
         private void PhysicsWIn_Paint(object sender, PaintEventArgs pea)
-        {
-            pea.Graphics.FillRectangle(Brushes.Gray, 0, floor, Width, Height);
+        {;
             pea.Graphics.DrawImage(screen, 0, 0);
         }
         private void PhysicsWIn_MouseDown(object sender, MouseEventArgs mea)
@@ -46,6 +40,7 @@ namespace Testing__PixelEngine_
             mouseY = mea.Y;
             if (mea.Button == MouseButtons.Left)
             {
+                //add elements to list ---------------------------------------------------------------------------------------
                 screen.SetPixel(mouseX, mouseY, Color.Black);
                 Points.Add(mea.Location);
             }
@@ -59,12 +54,10 @@ namespace Testing__PixelEngine_
                         Points.Add(new Point(mouseX + i, mouseY + v));
                     }
                 }
-                //Point dummy = GetLowest(new Point(mouseX - 20, mouseY - 20));
-                //Console.WriteLine(dummy);
-                //screen.SetPixel(dummy.X, dummy.Y, Color.Red);
             }
             Refresh(); // invalidate() & update()
         }
+        
         private int AllowedToMove(Point p)
         {
             if (p.Y == floor - 1)
@@ -163,6 +156,7 @@ namespace Testing__PixelEngine_
 
         private void button1_Click(object sender, EventArgs e)
         {
+            // do the operations -----------------------------------------------------------------------------------
             Gravity(Points);
         }
     }
